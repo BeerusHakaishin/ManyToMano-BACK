@@ -1,4 +1,4 @@
-package com.manyToMano.api;
+package com.manytomano.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
