@@ -1,5 +1,6 @@
 package com.manytomano.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.manytomano.api.entity.Article;
+import com.manytomano.api.entity.Category;
 import com.manytomano.api.repository.ArticleRepository;
+import com.manytomano.api.repository.CategoryRepository;
 
 @RestController
 @CrossOrigin
@@ -22,6 +25,8 @@ public class ArticleController {
 	
 	@Autowired
 	ArticleRepository articleRepository;
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	// find all
 	@GetMapping
@@ -39,7 +44,18 @@ public class ArticleController {
 		return optArticle.get();
 	}
 	
-	// find by category id and on sale
+	// find by category id and on sale	
+	@GetMapping("/category/{id}/on-sale")
+	public List<Article> findByCategoryAndOnSale(Long id, Boolean onSale) {
+		List<Article> articles = categoryRepository.getById(id).getArticles();
+		List<Article> articlesOnSale = new ArrayList<>();
+		for (Article article : articles) {
+			if (article.getOnSale()) {
+				articlesOnSale.add(article);
+			};
+		}		
+		return articlesOnSale;
+	};
 	
 	// find by category id and no shipping fees
 	
