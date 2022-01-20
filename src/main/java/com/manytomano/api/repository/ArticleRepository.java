@@ -14,8 +14,8 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 //	List<Article> findByCategoryAndOnSale(Category category, Boolean onSale);
 	
 	// find by category id and no shipping fees (seller)	
-	@Query(value = "SELECT a FROM article a JOIN seller s ON article.seller_id = seller.id WHERE s.shipping_fees = ?1 AND a.category_id = ?2")
-	List<Article> findByShippingFeesAndByCategoryNative(Float shippingFees, Long id);
+//	@Query(value = "SELECT a FROM article a JOIN seller s ON article.seller_id = seller.id WHERE s.shipping_fees = ?1 AND a.category_id = ?2")
+//	List<Article> findByShippingFeesAndByCategoryNative(Float shippingFees, Long id);
 	
 	
 	
