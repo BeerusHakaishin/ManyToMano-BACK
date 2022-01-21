@@ -28,5 +28,5 @@ public class FileService {
 		} else {
 			throw new IOException("Give a name to the file you're searching");
 		}
-	}}
-
+	}
+}
